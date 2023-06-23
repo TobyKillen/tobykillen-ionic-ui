@@ -1,0 +1,8 @@
+{
+  "name": "toby-killen-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "3f988a8d"
+}
