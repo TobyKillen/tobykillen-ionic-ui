@@ -1,0 +1,25 @@
+
+
+#tobyimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/* Default styles for the h1 element */
+#tobykillen {
+    font-size: 36px; /* Adjust the font size as needed */
+    font-weight: bold; /* You can adjust the font weight */
+    /* Add other styles as needed */
+  }
+  
+  /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+  @media (max-width: 768px) {
+    #tobykillen {
+      font-size: 34px; /* Adjust the font size for mobile screens */
+      /* You can also make other style adjustments for mobile here */
+      font-weight: bold;
+    }
+  }
+  
