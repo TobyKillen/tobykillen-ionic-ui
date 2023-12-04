@@ -1,0 +1,30 @@
+.container {
+  padding: 20px;
+}
+
+.jumbotron {
+
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+ion-item {
+  --ion-label-padding-start: 0;
+}
+
+ion-button {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .display-4 {
+    font-size: 1.5rem;
+  }
+}
+
+
+#reset-btn, .reset-btn {
+  background-color: rgb(0, 183, 255);
+}
+

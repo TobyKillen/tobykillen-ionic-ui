@@ -1,52 +1,52 @@
-
-
 <ion-content [fullscreen]="true">
-  
+
   <div class="container">
 
-
     <div class="jumbotron">
-      <h1 class="display-4" style="font-size: 3rem; font-weight: bold;">Reach Out!</h1>
+      <h1 class="display-4" style="font-size: 2rem; font-weight: bold;">Reach Out!</h1>
       <p class="lead">
-        Hello there! I am always open to discuss new projects, creative ideas or opportunities to be part of your visions.
+        Feel free to reach out to me if you have any questions or just want to chat. 
         <br>
-        Get in touch with me and let's make something great together.        
+        If you're looking to get in touch for some craic, don't hesitate—my virtual door is always open!
       </p>
-      <hr> 
-
+      <hr>
     </div>
 
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
-
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <ion-item>
-        <ion-label position="floating">Full Name</ion-label>
-        <ion-input type="text" formControlName="name"></ion-input>
+        <ion-label position="stacked">Full Name</ion-label>
+        <ion-input type="text" formControlName="name" placeholder="John Doe"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Email Address</ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
+        <ion-label position="stacked">Email Address</ion-label>
+        <ion-input type="email" formControlName="email" placeholder="john.doe@example.com"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Contact Number</ion-label>
-        <ion-input type="tel" formControlName="contact"></ion-input>
+        <ion-label position="stacked">Contact Number</ion-label>
+        <ion-input type="tel" formControlName="contact" placeholder="123-456-7890"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Message</ion-label>
-        <ion-textarea formControlName="message"></ion-textarea>
+        <ion-label position="stacked">Message</ion-label>
+        <ion-textarea formControlName="message" placeholder="Your message goes here..."></ion-textarea>
       </ion-item>
-      
-      <ion-button expand="block" color="primary" type="submit">Submit</ion-button>
-      <ion-button expand="block" color="secondary" type="reset">Reset</ion-button>
+
+      <ion-row class="ion-margin-top">
+        <ion-col>
+          <ion-button expand="full" color="primary" type="submit" id="submit">Submit</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="full" color="secondary" type="reset">Reset</ion-button>
+        </ion-col>
+      </ion-row>
 
 
 
-  </form>
-</div>
+    </form>
 
-
+  </div>
 
 </ion-content>

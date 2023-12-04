@@ -1,25 +1,125 @@
-
-
 #tobyimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center;
+}
+
+#tobyimg-container {
+  text-align: center;
+}
+
+#tobykillen {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+#fullname {
+  font-weight: bold;
+  font-size: 4.5rem;
+  font-style: italic;
+}
+
+#name-container {
+  text-align: center;
+}
+
+.profile-image {
+  width: 350px; 
+  border-radius: 100%;
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+#info-container {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#social-tags {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-icon {
+  font-size: 40px;
+  margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+
+  #tobyimg {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    text-align: center;
+  }
+  
+  #tobyimg-container {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  #tobykillen {
+    font-size: 5rem;
+    font-weight: bold;
+  }
+  
+  #fullname {
+    font-weight: bold;
+    font-size: 2.5rem;
+    font-style: italic;
+  }
+  
+  #name-container {
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 350px; 
+    border-radius: 100%;
+    border: 1px solid black;
+    margin-top: 10px;
+  }
+
+  #info-container {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+  }
+  
 }
 
-/* Default styles for the h1 element */
-#tobykillen {
-    font-size: 36px; /* Adjust the font size as needed */
-    font-weight: bold; /* You can adjust the font weight */
-    /* Add other styles as needed */
-  }
-  
-  /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
-  @media (max-width: 768px) {
-    #tobykillen {
-      font-size: 34px; /* Adjust the font size for mobile screens */
-      /* You can also make other style adjustments for mobile here */
-      font-weight: bold;
-    }
-  }
-  
+
+

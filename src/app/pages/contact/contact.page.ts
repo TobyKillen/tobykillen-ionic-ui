@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ContactPage implements OnInit {
 
-  constructor() { }
+  constructor(public ToastController: ToastController) { }
 
   contactForm: any;
 
@@ -25,6 +26,16 @@ export class ContactPage implements OnInit {
 
   onSubmit() {
     console.log(this.contactForm.value);
+    this.ToastController.create({
+      message: 'Your message has been sent!',
+      duration: 2000,
+      color: 'success',
+      position: 'top',
+    }).then((toast) => {
+      toast.present();
+      this.contactForm.reset();
+
+    });
   }
 
 }
