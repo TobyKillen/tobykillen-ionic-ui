@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
   },
   {
-    path: 'portfolio',
+    path: '',
     loadChildren: () => import('./pages/portfolio/portfolio.module').then( m => m.PortfolioPageModule)
   }
 ];
