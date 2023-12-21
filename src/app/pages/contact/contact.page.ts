@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { EmailServiceService } from 'src/app/api/email-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -9,7 +11,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class ContactPage implements OnInit {
 
-  constructor(public ToastController: ToastController) { }
+  constructor(public ToastController: ToastController, public EmailServiceService: EmailServiceService, public Router: Router) { }
 
   contactForm: any;
 
@@ -25,17 +27,45 @@ export class ContactPage implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.contactForm.value);
-    this.ToastController.create({
-      message: 'Your message has been sent!',
-      duration: 2000,
-      color: 'success',
-      position: 'top',
-    }).then((toast) => {
-      toast.present();
-      this.contactForm.reset();
+    
+    const message_payload = {
+      name: this.contactForm.value.name,
+      email: this.contactForm.value.email,
+      contact: this.contactForm.value.contact,
+      message: this.contactForm.value.message
+    };
 
+    this.contactForm.reset();
+
+    this.EmailServiceService.sendEmail(this.contactForm.value.email, JSON.stringify(message_payload)).then((response) => {
+      if (response.success) {
+        this.ToastController.create({
+          message: 'Message sent successfully.',
+          duration: 2000,
+          color: 'success',
+          position: 'top'
+        }).then((toast) => {
+          toast.present();
+          this.Router.navigateByUrl('/thank-you');
+
+        });
+      } else {
+        this.ToastController.create({
+          message: 'Message failed to send.',
+          duration: 2000,
+          color: 'danger',
+          position: 'top'
+        }).then((toast) => {
+          toast.present();
+        });
+      }
     });
+
+
+ 
+    
+    
+  
   }
 
 }
