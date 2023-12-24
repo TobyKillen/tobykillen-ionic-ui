@@ -19,8 +19,8 @@ export class ContactPage implements OnInit {
     // Create a new FormGroup instance
     this.contactForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      contact: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      contact: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]), // [Validators.minLength(10), Validators.maxLength(10)
       message: new FormControl('', Validators.required)
     });
     
@@ -34,9 +34,7 @@ export class ContactPage implements OnInit {
       contact: this.contactForm.value.contact,
       message: this.contactForm.value.message
     };
-
-    this.contactForm.reset();
-
+    
     this.EmailServiceService.sendEmail(this.contactForm.value.email, JSON.stringify(message_payload)).then((response) => {
       if (response.success) {
         this.ToastController.create({
@@ -47,7 +45,6 @@ export class ContactPage implements OnInit {
         }).then((toast) => {
           toast.present();
           this.Router.navigateByUrl('/thank-you');
-
         });
       } else {
         this.ToastController.create({
@@ -60,12 +57,6 @@ export class ContactPage implements OnInit {
         });
       }
     });
-
-
- 
-    
-    
-  
   }
 
 }
