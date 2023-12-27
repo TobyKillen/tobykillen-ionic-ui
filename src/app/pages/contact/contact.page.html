@@ -15,16 +15,16 @@
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
       <ion-item [class.invalid]="contactForm.get('name').invalid && contactForm.get('name').touched">
-        <ion-label position="stacked">Full Name</ion-label>
-        <ion-input type="text" formControlName="name" placeholder="John Doe"></ion-input>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
         <div *ngIf="contactForm.get('name').hasError('required') && contactForm.get('name').touched">
           Full Name is required.
         </div>
       </ion-item>
 
       <ion-item [class.invalid]="contactForm.get('email').invalid && contactForm.get('email').touched">
-        <ion-label position="stacked">Email Address</ion-label>
-        <ion-input type="email" formControlName="email" placeholder="john.doe@example.com"></ion-input>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
         <div *ngIf="contactForm.get('email').hasError('required') && contactForm.get('email').touched">
           Email Address is required.
         </div>
@@ -34,16 +34,16 @@
       </ion-item>
 
       <ion-item [class.invalid]="contactForm.get('contact').invalid && contactForm.get('contact').touched">
-        <ion-label position="stacked">Contact Number</ion-label>
-        <ion-input type="tel" formControlName="contact" placeholder="Example: 07123456789"></ion-input>
+        <ion-label position="floating">Contact Number</ion-label>
+        <ion-input type="tel" formControlName="contact"></ion-input>
         <div *ngIf="contactForm.get('contact').hasError('required') && contactForm.get('contact').touched">
           Contact Number is required.
         </div>
       </ion-item>
 
       <ion-item [class.invalid]="contactForm.get('message').invalid && contactForm.get('message').touched">
-        <ion-label position="stacked">Message</ion-label>
-        <ion-textarea formControlName="message" placeholder="Your message goes here..."></ion-textarea>
+        <ion-label position="floating">Message</ion-label>
+        <ion-textarea formControlName="message"></ion-textarea>
         <div *ngIf="contactForm.get('message').hasError('required') && contactForm.get('message').touched">
           Message is required.
         </div>
