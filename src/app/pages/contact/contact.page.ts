@@ -23,40 +23,51 @@ export class ContactPage implements OnInit {
       contact: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]), // [Validators.minLength(10), Validators.maxLength(10)
       message: new FormControl('', Validators.required)
     });
-    
+
   }
 
   onSubmit() {
-    
     const message_payload = {
       name: this.contactForm.value.name,
       email: this.contactForm.value.email,
       contact: this.contactForm.value.contact,
       message: this.contactForm.value.message
     };
-    
-    this.EmailServiceService.sendEmail(this.contactForm.value.email, JSON.stringify(message_payload)).then((response) => {
-      if (response.success) {
+
+    this.EmailServiceService.sendEmail(this.contactForm.value.email, JSON.stringify(message_payload))
+      .then((response) => {
+        if (response.success) {
+          this.ToastController.create({
+            message: 'Message sent successfully.',
+            duration: 2000,
+            color: 'success',
+            position: 'top'
+          }).then((toast) => {
+            toast.present();
+            this.Router.navigateByUrl('/thank-you');
+          });
+        } else {
+          this.ToastController.create({
+            message: 'Message failed to send.',
+            duration: 2000,
+            color: 'danger',
+            position: 'top'
+          }).then((toast) => {
+            toast.present();
+          });
+        }
+      })
+      .catch((error) => {
         this.ToastController.create({
-          message: 'Message sent successfully.',
-          duration: 2000,
-          color: 'success',
-          position: 'top'
-        }).then((toast) => {
-          toast.present();
-          this.Router.navigateByUrl('/thank-you');
-        });
-      } else {
-        this.ToastController.create({
-          message: 'Message failed to send.',
+          message: 'Message failed to send. Please try again later.',
           duration: 2000,
           color: 'danger',
           position: 'top'
         }).then((toast) => {
           toast.present();
         });
-      }
-    });
+        console.error(error);
+      });
   }
 
 }
