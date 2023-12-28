@@ -65,6 +65,7 @@ export class ContactPage implements OnInit {
           position: 'top'
         }).then((toast) => {
           toast.present();
+          this.contactForm.reset();
         });
         console.error(error);
       });
