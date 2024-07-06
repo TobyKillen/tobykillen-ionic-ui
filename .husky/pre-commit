@@ -1,1 +1,0 @@
-npm run build && git add www/ && git commit -m "chore: build project" --no-verify && git push --no-verify
