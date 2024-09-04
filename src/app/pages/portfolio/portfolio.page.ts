@@ -9,9 +9,9 @@ export class PortfolioPage implements OnInit {
 
   array_images: string[] = [
     '../../../assets/images/me_1.jpg',
+    '../../../assets/images/me.jpg',
     '../../../assets/images/me_2.jpg',
-    '../../../assets/images/me_3.jpeg',
-    '../../../assets/images/me6.jpeg',
+    '../../../assets/images/me1.jpg',
   ];
   
   current_index: number = 0;
