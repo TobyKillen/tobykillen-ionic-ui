@@ -10,7 +10,8 @@ on:
 jobs:
   IonicFrameworkBuildDeploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment:
+      name: production
 
     steps:
       - name: Checkout repository
@@ -33,6 +34,10 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
+
+      - name: Approval required to proceed to production
+        if: ${{ github.ref == 'refs/heads/master' }}
+        run: echo "Waiting for approval to proceed with deployment to production environment."
 
       - name: Deploy to S3
         run: |
