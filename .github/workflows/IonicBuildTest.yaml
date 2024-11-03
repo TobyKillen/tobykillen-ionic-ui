@@ -60,4 +60,4 @@ jobs:
           }'
 
       - name: Output website URL
-        run: echo "Website URL: http://tobykillen-ionic-ui-build.s3-website-eu-west-1.amazonaws.com"
+        run: "echo Website URL: http://tobykillen-ionic-ui-build.s3-website-eu-west-1.amazonaws.com"
