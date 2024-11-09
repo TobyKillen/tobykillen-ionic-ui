@@ -1,4 +1,4 @@
-name: Build and Deploy Ionic Angular Project
+name: Build Ionic Angular project
 on:
   push:
     branches:
@@ -27,42 +27,3 @@ jobs:
 
       - name: Build Ionic Angular project
         run: npm run build
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
-
-      - name: Approval required to proceed to production
-        if: ${{ github.ref == 'refs/heads/master' }}
-        run: echo "Waiting for approval to proceed with deployment to production environment."
-
-      - name: Deploy to S3
-        run: |
-          aws s3 sync ./www s3://tobykillen-ionic-ui-build --delete
-
-      - name: Enable static website hosting on S3
-        run: |
-          aws s3api put-bucket-website --bucket tobykillen-ionic-ui-build --website-configuration '{
-            "IndexDocument": {"Suffix": "index.html"},
-            "ErrorDocument": {"Key": "error.html"}
-          }'
-
-      - name: Set bucket policy for public access
-        run: |
-          aws s3api put-bucket-policy --bucket tobykillen-ionic-ui-build --policy '{
-            "Version": "2012-10-17",
-            "Statement": [
-              {
-                "Effect": "Allow",
-                "Principal": "*",
-                "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::tobykillen-ionic-ui-build/*"
-              }
-            ]
-          }'
-
-      - name: Output website URL
-        run: "echo Website URL: http://tobykillen-ionic-ui-build.s3-website-eu-west-1.amazonaws.com"
