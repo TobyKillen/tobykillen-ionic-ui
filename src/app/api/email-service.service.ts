@@ -17,7 +17,7 @@ export class EmailServiceService {
       message: message
     };
     
-    const response = await fetch('https://api.prod.tobykillen.com/api/sendemail', {
+    const response = await fetch('https://66hqzqmb46.execute-api.eu-west-1.amazonaws.com/production/api/v1/email/sendemail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
